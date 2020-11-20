@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: twocontainers
+  namespace: default
+  labels:
+    app: twocontainers
+  annotations:
+    version: v0.5.0
+    releasedBy: david
+    purpose: demo
+spec:
+  containers:
+  - name: sise
+    image: quay.io/openshiftlabs/simpleservice:0.5.0
+    ports:
+    - containerPort: 9876
+  - name: shell
+    image: centos:7
+    command:
+    - "bin/bash"
+    - "-c"
+    - "sleep 10000"
